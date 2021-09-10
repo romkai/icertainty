@@ -4,6 +4,7 @@
 			.page__content
 				TvShowsTable(
 					:items="model.items"
+					:loading="model.loading"
 				)
 
 			.page__footer
