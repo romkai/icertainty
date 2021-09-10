@@ -26,7 +26,7 @@
 
 				v-col.tv__rating(:cols="colsSizes.durationAndRating")
 					.d-flex.align-center
-						div.text-h6.font-weight-bold.mr-2 {{ item.rating.average || 0 }}
+						div.text-h6.font-weight-bold.mr-2 {{ getRating(item) }}
 						v-rating(
 							:value="item.rating.average"
 							background-color="accent"
@@ -36,7 +36,7 @@
 							readonly small dense
 						)
 					.text-body-2 Длительность:
-						span.info--text.ml-2 {{ item.averageRuntime }}мин.
+						span.info--text.ml-2 {{ item.averageRuntime }} мин.
 
 </template>
 
@@ -71,6 +71,10 @@ export default class TvShowsTable extends Vue {
 
 	getCountryName(item: TvShow): string {
 		return item.network?.country.name || 'Страна не указана';
+	}
+
+	getRating(item: TvShow): string {
+		return (item.rating?.average || 0).toFixed(1);
 	}
 }
 </script>
